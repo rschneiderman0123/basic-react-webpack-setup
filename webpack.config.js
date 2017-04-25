@@ -10,15 +10,22 @@ module.exports = {
          publicPath: "/dist/",
      },
      module: {
-         loaders: [{
+         loaders: [
+             {
              test: /\.js?$/,
              exclude: /node_modules/,
              loader: 'babel-loader',
              query: {
                 presets: ['react','es2015',"stage-2"],
                 "plugins": ["transform-decorators-legacy"]
+                }
+             },
+             {
+                test: /\.css/,
+                loaders: ['style', 'css'],
+                include: __dirname + '/src'
              }
-         }]
+         ]
      },
      devServer: {
         inline : true,
